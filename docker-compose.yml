@@ -1,0 +1,40 @@
+version: "2"
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "81:80"
+  backend:
+    container_name: backend
+    build:
+      context: backend/
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./backend/logs:/app/logs
+    networks:
+      - data-network
+  database:
+    container_name: database
+    image: mysql:5.7.23
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=demo
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d
+    networks:
+      - data-network
+    restart: always
+
+networks:
+  data-network:
+    driver: bridge
+
+volumes:
+  mysql_data:

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <h1>Frontend</h1>
+    <label for="Username">Username:</label>
+    <input type="text" id="username" name="username" /><br /><br />
+    <label for="Password">Password:</label>
+    <input type="text" id="password" name="password" /><br /><br />
+    <button
+      value="Submit"
+      onclick="createUser(document.getElementById('username').value, document.getElementById('password').value)"
+    >
+      Submit
+    </button>
+  </body>
+</html>

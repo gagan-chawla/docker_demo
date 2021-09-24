@@ -1,0 +1,6 @@
+use demo;
+CREATE TABLE IF NOT EXISTS user (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(124),
+    password VARCHAR(124)
+);
